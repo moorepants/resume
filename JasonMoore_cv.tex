@@ -1,0 +1,583 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NOTE: If you find that it says                                     %%
+%%                                                                    %%
+%%                           1 of ??                                  %%
+%%                                                                    %%
+%% at the bottom of your first page, this means that the AUX file     %%
+%% was not available when you ran LaTeX on this source. Simply RERUN  %% 
+%% LaTeX to get the ``??'' replaced with the number of the last page  %% 
+%% of the document. The AUX file will be generated on the first run   %%
+%% of LaTeX and used on the second run to fill in all of the          %%
+%% references.                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+%\usepackage[paper=letterpaper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=1.2in,     % Length of section titles
+%            marginparsep=.05in,       % Space between titles and text
+%            margin=1in,               % 1 inch margins
+%            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+\usepackage[paper=a4paper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=30.5mm,    % Length of section titles
+            marginparsep=1.5mm,       % Space between titles and text
+            margin=25mm,              % 25mm margins
+            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+%% This gives us fun enumeration environments. compactitem will be nice.
+\usepackage{paralist}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+%
+% Usage: \makeheading{name}
+%
+% Place at top of document. It should be the first thing.
+\newcommand{\makeheading}[1]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+                {\large \bfseries #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+% The section headings
+%
+% Usage: \section{section name}
+%
+% Follow this section IMMEDIATELY with the first line of the section
+% text. Do not put whitespace in between. That is, do this:
+%
+%       \section{My Information}
+%       Here is my information.
+%
+% and NOT this:
+%
+%       \section{My Information}
+%
+%       Here is my information.
+%
+% Otherwise the top of the section header will not line up with the top
+% of the section. Of course, using a single comment character (%) on
+% empty lines allows for the function of the first example with the
+% readability of the second example.
+\renewcommand{\section}[2]%
+        {\pagebreak[2]\vspace{1.3\baselineskip}%
+         \phantomsection\addcontentsline{toc}{section}{#1}%
+         \hspace{0in}%
+         \marginpar{
+         \raggedright \scshape #1}#2}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section 
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{compactitem}[#1]}{\end{compactitem}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[2]}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Jason K.~Moore}
+
+\section{Contact Information}
+%
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table 
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.85in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+\href{http://www.3me.tudelft.nl/live/pagina.jsp?id=618a44d6-26ea-4e6c-941b-767cd114f4b5&lang=en}%
+     {Laboratory for Engineering Mechanics} &\textit{Voice:} +31(0)15-27 86932 \\
+\href{http://www.tudelft.nl/}{Delft University of Technology}
+                           & \textit{E-mail:}
+\href{mailto:j.moore@tudelft.nl}{j.moore@tudelft.nl} \\
+Mekelweg 2                           &   \\
+2628CD Delft, Netherlands                 & \\
+    &\\
+\end{tabular}
+
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+\href{http://mae.ucdavis.edu/~biosport/}%
+     {Sports Biomechanics Lab} & \textit{Voice:} +01(530) 752-2163\\
+\href{http://mae.ucdavis.edu/}
+     {Mechanical and Aeronautical Engineering Dept.} & \textit{E-mail:}
+\href{mailto:jkmoor@ucdavis.edu}{jkmoor@ucdavis.edu} \\
+\href{http://www.ucdavis.edu/}
+     {University of California, Davis}                    & 
+\href{http://mae.ucdavis.edu/~biosport/jkm/}{mae.ucdavis.edu/\~{}biosport/jkm} \\
+One Shields Avenue                                        & \\
+Davis, CA 95616, USA    & \\
+\end{tabular}
+
+\section{Citizenship}
+%
+USA
+
+\section{Research Interests}
+%
+Multibody dynamics, manual control, vehicle dynamics, aircraft control, bicycle dynamics, handling and control, machine design, appropriate technology, human powered machines
+
+\section{Education}
+%
+\href{http://www.ucdavis.edu}{\textbf{University of California at Davis}}, 
+Davis, California USA
+\begin{outerlist}
+
+\item[] Ph.D., 
+        \href{http://mae.ucdavis.edu/}
+             {Mechanical and Aeronautical Engineering} 
+        (expected graduation date: June 2010)
+        \begin{innerlist}
+        \item Thesis Topic: Bicycle dynamics, control and handling qualities
+        \item Advisor: 
+              \href{http://mae.ucdavis.edu/faculty/hubbard/hubbard.html}
+                   {Professor Mont~Hubbard}
+        \item Area of Study: Multibody dynamics and control systems
+        \end{innerlist}
+
+\item[] M.Sc., 
+        \href{http://mae.ucdavis.edu/}
+             {Mechanical and Aeronautical Engineering}, June 2007 
+        \begin{innerlist}
+        \item Advisor: 
+              \href{http://mae.ucdavis.edu/faculty/hubbard/hubbard.html}
+                   {Professor Mont~Hubbard}
+        \item Area of Study: Multibody dynamics, control systems, and machine design
+        \end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+\href{http://www.odu.edu}{\textbf{Old Dominion University}}, 
+Norfolk, Virginia USA
+\begin{outerlist}
+
+\item[] B.Sc., 
+        \href{http://eng.odu.edu/me/}
+             {Mechanical Engineering}, December 2004
+        \begin{innerlist}
+        \item \emph{Magna cum Laude}
+        \item Machine Design Specialization
+        \item Minor in \href{http://sci.odu.edu/math/}
+                            {Mathematics}
+        \item Minor in \href{http://al.odu.edu/philosophy/}
+        										{Philosophy and Religious Studies}
+        \end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+\href{http://www.pcs.k12.va.us/schools/ths/ths.htm}{\textbf{Tunstall High School}}, 
+Dry Fork, Virginia USA
+\begin{outerlist}
+
+\item[] Advanced Diploma, May 2000
+        \begin{innerlist}
+        \item Graduated with Honors
+        \end{innerlist}
+
+\end{outerlist}
+\section{Awards} 
+%
+\href{http://exchanges.state.gov/}{U.S. Department of State}
+\begin{innerlist}
+\item \href{http://fulbright.state.gov/}{Fulbright Grant to the Netherlands}, 2008-2009
+\end{innerlist}
+
+\blankline
+
+\href{http://www.ucdavis.edu}{University of California, Davis}
+\begin{innerlist}
+\item \href{http://sustainability.ucdavis.edu/grants/awards.html#humanpower}
+           {Campus Sustainability Grant (Human Powered Utility Vehicle Pilot Program)}, 2008
+\item \href{http://sustainability.ucdavis.edu/grants/awards.html#bikechurch}
+           {Campus Sustainability Grant (Davis Bike Church Physical Space Renovation)}, 2008
+\item Graduate Student Association Travel Award, 2008 
+\item Institute for Transportation Studies Travel Award, 2008
+\item \href{http://sustainability.ucdavis.edu/grants/awards.html#pedalpower}
+           {Campus Sustainability Grant (Pedal Powered Charging Table)}, 2007
+\item Joseph Beggs Fellowship for Kinematics,
+				2006--2007
+\item MAE Department Fellowship, UC Davis,
+        2005--2006
+\end{innerlist}
+
+\blankline
+
+\href{http://www.odu.edu}{Old Dominion University}
+\begin{innerlist}
+\item Governor's Technology Scholarship,
+				2000--2004
+\end{innerlist}
+
+\section{Academic Experience}
+
+\href{http://www.tudelft.nl}{\textbf{Delft University of Technology}}, Delft, Zuid-Holland Netherlands
+\begin{outerlist}
+\item[] \textit{Fulbright Visiting Scholar and Researcher}%
+        \hfill \textbf{August 2008 to present}
+\begin{innerlist}
+\item Researcher in at the \href{http://bicycle.tudelft.nl}{Bicycle Dynamics Laboratory}.
+\end{innerlist}
+\end{outerlist}
+
+\blankline
+
+\href{http://www.ucdavis.edu}{\textbf{University of California at Davis}}, 
+Davis, California USA
+\begin{outerlist}
+\item[] \textit{Graduate Student}%
+        \hfill \textbf{September 2005 to present}
+
+\item[] \textit{Biomedical Engineer Researcher}%
+        \hfill \textbf{August 2007 to present}
+\begin{innerlist}
+\item Designed and supervised the fabrication of a cell shearing device.
+\end{innerlist}
+
+\item[] \textit{Machine Shop Supervisor}%
+        \hfill \textbf{January 2007 to June 2008}
+\begin{innerlist}
+\item Supervised student machine shop in evening hours.
+\item Helped students with machining and fabrication projects.
+\item Safety class instruction.
+\item Machining and fabrication
+\item Shop organization
+\end{innerlist}
+
+\item[] \textit{Action Research Team Facilitator}%
+        \hfill \textbf{March 2007 to December 2007}
+\begin{innerlist}
+\item Led group of students in the design and construction of a pedal powered desk laptop charging station.
+\item Competed in Google and Specialized's Innovate or Die Contest
+\item Featured in many articles and news broadcasts
+\item Published in the \underline{Human Powered Home} by Tamara Dean.
+\end{innerlist}
+
+\item[] \textit{Teaching Assistant}%
+        \hfill \textbf{March 2006 to June 2007}
+\begin{innerlist}
+\item Provided in-class support to undergraduate engineering students (EME 50, ENG 4, EME 250).
+\item Laboratory lectures: machine shop and drafting/CAD, graded assignments, administered tests, held office hours.
+\end{innerlist}
+
+\item[] \textit{Assitant Action Research Team Facilitator}%
+        \hfill \textbf{March 2006 to June 2006}
+\begin{innerlist}
+\item Helped lead a group of students through starting a mock non-profit group.
+\end{innerlist}
+
+\item[] \textit{Reader}%
+        \hfill \textbf{September 2006 to December 2006}
+\begin{innerlist}
+\item Graded mechanical design assignments (EME 250).
+\end{innerlist}
+\end{outerlist}
+\blankline
+
+\href{http://www.odu.edu}{\textbf{Old Dominion University}}, Norfolk, Virginia USA
+\begin{outerlist}
+\item[] \textit{Undergraduate Student}%
+        \hfill \textbf{August 2000 to December 2004}
+        
+\item[] \textit{Maglev Tram Design Engineer}%
+        \hfill \textbf{May 2004 to January 2005}
+        \begin{innerlist}
+\item Created a reference model of a magnetic levitation transport vehicle using AutoCAD Mechanical Desktop.
+\end{innerlist}
+
+\item[] \textit{Langley Full Scale Tunnel Design Engineer}%
+        \hfill \textbf{June 2004 to August 2005}
+        \begin{innerlist}
+\item Extensive modeling and drafting with Autodesk Inventor.
+\item Designed a portable floor system for the current car balance.
+\item Designed a six degree of freedom full scale car balance.
+\item Stress analysis reports for NASA specs.
+\item Test-model design, fabrication and repair.
+\item Support in daily activities (test preparation, taking data, etc.).
+\end{innerlist}
+
+\item[] \textit{ODU HPV Team Project Lead}%
+        \hfill \textbf{September 2003 to January 2005}
+        \begin{innerlist}
+\item Lead/managed a mechanical engineering senior design project
+\item Designed and constructed a human powered land vehicle
+\item Focused on bicycle frame, controls, stability, and drive train design
+\item Received 6th place out of 20 as a rookie team.
+\item Website designer and manager.
+\end{innerlist}
+
+\item[] \textit{ODU SAE Formula Team Design Engineer}%
+        \hfill \textbf{2001 to 2002}
+        \begin{innerlist}
+\item Designed and fabricated a scaled formula race car
+\item Extensive 3D modeling with AutoCAD Mechanical Desktop
+\item Designed and constructed the drive train and composite body
+\end{innerlist}
+
+\end{outerlist}
+
+\blankline
+
+\href{http://www.dcc.vccs.edu/}{\textbf{Danville Community College}}, Danville, Virginia USA
+\begin{outerlist}
+\item[] \textit{CNC Mill Operator}%
+        \hfill \textbf{June 2001 to August 2001}
+        \begin{innerlist}
+\item Learned G-code/Manual Programming
+\item Learned FeatureCam 3D CAD/CAM software
+\item Programmed and operated a HAAS 3-axis mill
+\end{innerlist}
+\end{outerlist}
+
+\section{Conference Publications}
+Moore, J. and Hubbard, M., Parametric Study of Bicycle Stability. The Engineering of Sport 7: Proceedings of the 7th International Sports Engineering Association Conference. Biarritz, France. June 2-6, 2008.
+
+\blankline
+
+Moore, J., Peterson, D., and Hubbard, M., Influence of Rider Dynamics on the Whipple Bicycle Model. 11th International Symposium on Computer Simulation in Biomechanics. Tainan, Taiwan, June 28-30, 2007. 
+
+\section{Professional Accreditation}
+Passed the Fundamentals of Engineering Exam in Virginia
+
+\section{Professional Experience}
+%
+\href{http://www.bauercomp.com/}{\textbf{Bauer Compressors}}, 
+Norfolk, Virginia USA
+\begin{outerlist}
+
+\item[] \textit{Mechanical Design Engineer Intern}%
+        \hfill \textbf{June 2003 to December 2003}
+\begin{innerlist}
+\item Extensive 3D modeling with Autodesk Inventor
+\item Sheet metal design and fabrication
+\item V-belt drive designs
+\item Oil filtration system design
+\item Designed parts and prepared drawings for fabrication
+\end{innerlist}
+\end{outerlist}
+
+\blankline
+
+\href{http://www.areaaccess.com/}{\textbf{Area Access}}, 
+Norfolk, Virginia USA
+\begin{outerlist}
+
+\item[] \textit{Elevator Mechanic Assistant}%
+        \hfill \textbf{May 2002 to August 2002}
+\begin{innerlist}
+\item Installed and repaired elevators and various accessibility machines.
+\item Exposed to various electrical and mechanical systems.
+\end{innerlist}
+\end{outerlist}
+
+\blankline
+
+\href{}{\textbf{Mark D. Moore Construction Company}}, 
+Danville, Virginia USA
+\begin{outerlist}
+
+\item[] \textit{Carpenter}%
+        \hfill \textbf{1995 to 2001}
+\begin{innerlist}
+\item Residential house construction
+\item Framing, finishing, painting, drywall, hardwood floors, masonry
+\end{innerlist}
+
+\end{outerlist}
+
+\section{Service}
+Bicycle Mechanic and Organizer, \href{http://www.daviswiki.org/Bike_Church/}{Davis Bike Church}, Davis, CA, September 2005 to present
+\begin{innerlist}
+\item Raised \$10,000 in donations and grants
+\item Organized parties, fundraisers, bike rides, work parties, outreach events
+\item Web site maintenance, shift scheduling, handled distributor orders, managed email listservs.
+\item Worked as a mechanic and taught bicycle repair.
+\end{innerlist}
+
+\blankline
+
+Volunteer Engineer, \href{http://www.mayapedal.org/}{Maya Pedal}, San Andres Itzapa, Guatemala, Summer 2007
+\begin{innerlist}
+\item Constructed pedal powered machines (i.e. blender, corn dekerneler/grinder, etc)
+\item Design work on a macdamia nut sheller
+\item Repaired bicycles
+\item Shop organization: tool boards, bike graveyard
+\end{innerlist}
+
+\blankline
+
+Volunteer Engineer, \href{http://www.whirlwindwheelchair.org/}{Whirlwind Wheelchair International}, Lusaka, Zambia, Summer 2006 
+\begin{innerlist}
+\item Worked at the \href{http://www.disacare.org.zm/}{Disacare Wheelchair Center}
+\item Worked on the design and fabrication team for a bicycle ambulance trailer
+\item Fixture design and training
+\end{innerlist}
+
+\blankline
+
+Volunteer Mentor, Virgnia Beach Public Schools, Virginia Beach, VA\\
+Assisted high schools students with an engineering design competition.
+
+\blankline
+
+Tour Leader, UC Davis Institute for Transportation Engineers, Davis, CA\\
+Organized a group bicycle ride and museum tour.
+
+\blankline
+
+Tour Guide, ODU College of Engineering, Norfolk, VA\\
+Led open house tours for middle school children.
+
+\blankline
+
+Bicycle Counter, Davis Bicycle Commission, Davis, CA\\
+Participated in bicycle usage data collection.
+
+
+\section{Technical Skills} 
+%
+Extensive machining and fabrication experience: milling, turning, welding (MIG, TIG, ARC, Torch, Brazing), wood working, sheet metal work
+ 
+\blankline
+
+Extensive drafting, solid modeling, CAD, CAM, and FEA experience. Proficient in: CADKEY, AutoCAD, AutoCAD Mechanical Desktop, Autodesk Inventor, FeatureCAM 3D, IntelliCAD, PATRAN/NASTRAN, PRO-Engineer/PRO-Mechanica, GMAX
+
+\blankline
+
+Website design and maintenance: Homesite, Microsoft Front Page, Text HTML editors, Macromedia Dreamweaver
+
+\blankline
+
+Dynamics and Simulation: Autolev, Axl/CampG, \href{http://www.mathworks.com/products/simulink/}{Simulink}
+
+\blankline
+
+Programming and Scripting Languages: C++, HTML, CNC/G-code
+
+\blankline
+
+
+Graphics: Paint Shop Pro, Macromedia Fireworks, GIMP, Inkscape
+
+\blankline
+
+
+Computational: \href{http://www.mathworks.com/products/matlab/}{\textsc{Matlab}}, MathCAD
+
+\blankline
+
+Instrumentation: \href{http://www.ni.com/}{LabVIEW}
+
+\blankline
+
+Operating Systems: Microsoft Windows
+
+\blankline
+
+Other: Microsoft Office, Google Docs, OpenOffice, \LaTeX{}, B\textsc{ib}\TeX{}, Endnote, JabRef, TeXnic Center
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
