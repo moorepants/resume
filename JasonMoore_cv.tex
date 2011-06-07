@@ -8,8 +8,8 @@
 %%                           1 of ??                                  %%
 %%                                                                    %%
 %% at the bottom of your first page, this means that the AUX file     %%
-%% was not available when you ran LaTeX on this source. Simply RERUN  %% 
-%% LaTeX to get the ``??'' replaced with the number of the last page  %% 
+%% was not available when you ran LaTeX on this source. Simply RERUN  %%
+%% LaTeX to get the ``??'' replaced with the number of the last page  %%
 %% of the document. The AUX file will be generated on the first run   %%
 %% of LaTeX and used on the second run to fill in all of the          %%
 %% references.                                                        %%
@@ -100,6 +100,33 @@
 \hypersetup{colorlinks,breaklinks,
             linkcolor=darkblue,urlcolor=darkblue,
             anchorcolor=darkblue,citecolor=darkblue}
+
+% remove the bibliography heading
+\makeatletter
+\renewenvironment{thebibliography}[1]
+{
+%     \section*{\refname}%
+%      \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+    {\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth
+  \advance\leftmargin\labelsep
+  \@openbib@code
+  \usecounter{enumiv}%
+  \let\p@enumiv\@empty
+  \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+  \sloppy
+  \clubpenalty4000
+  \@clubpenalty \clubpenalty
+  \widowpenalty4000%
+  \sfcode`\.\@m
+}
+{
+\def\@noitemerr
+{\@latex@warning{Empty `thebibliography' environment}}%
+\endlist
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -206,9 +233,9 @@ American English, Spanish (beginner), Dutch (beginner)
 
 \section{Research Interests}
 %
-Multibody dynamics, manual control, vehicle dynamics, aircraft control, bicycle
-dynamics, handling and control, machine design, appropriate technology, human
-powered machines
+Multibody dynamics, control systems, human operator control, vehicle dynamics, aircraft control, bicycle
+dynamics, aircraft dynamics, handling and control, machine design, appropriate technology, human
+powered machines, wind tunnel experimentation
 
 \section{Education}
 %
@@ -218,11 +245,10 @@ Davis, California USA
 
 \item[] Ph.D.,
         \href{http://mae.ucdavis.edu/}
-             {Mechanical and Aerospace Engineering}
-        (expected graduation date: October 2011)
+             {Mechanical and Aerospace Engineering}, December 2011
         \begin{innerlist}
         \item Thesis Topic: Bicycle dynamics, control and handling qualities
-        \item Advisor: 
+        \item Advisor:
               \href{http://mae.ucdavis.edu/faculty/hubbard/hubbard.html}
                    {Professor Mont~Hubbard}
         \item Area of Study: Multibody dynamics and control systems
@@ -276,7 +302,7 @@ Dry Fork, Virginia USA
 %
 \href{http://exchanges.state.gov/}{U.S. Department of State}
 \begin{innerlist}
-\item \href{http://fulbright.state.gov/}{Fulbright Grant to the Netherlands}, 2008-2009
+  \item \href{http://fulbright.state.gov/}{Fulbright Grant to the Netherlands}, 2008-2009
 \end{innerlist}
 
 \blankline
@@ -284,33 +310,27 @@ Dry Fork, Virginia USA
 \href{http://www.ucdavis.edu}{University of California, Davis}
 \begin{innerlist}
   \item Summer Graduate Student Researcher Award, 2010
-  \item \href{http://sustainability.ucdavis.edu/grants/awards.html#humanpower}
-           {Campus Sustainability Grant (Human Powered Utility Vehicle Pilot Program)}, 2008
-  \item \href{http://sustainability.ucdavis.edu/grants/awards.html#bikechurch}
-           {Campus Sustainability Grant (Davis Bike Church Physical Space Renovation)}, 2008
+  \item Campus Sustainability Grant (Human Powered Utility Vehicle Pilot Program), 2008
+  \item Campus Sustainability Grant (Davis Bike Church Physical Space Renovation), 2008
   \item Graduate Student Association Travel Award, 2008
   \item Institute for Transportation Studies Travel Award, 2008
-  \item \href{http://sustainability.ucdavis.edu/grants/awards.html#pedalpower}
-           {Campus Sustainability Grant (Pedal Powered Charging Table)}, 2007
-  \item Joseph Beggs Fellowship for Kinematics,
-				2006--2007
-  \item MAE Department Fellowship, UC Davis,
-        2005--2006
+  \item Campus Sustainability Grant (Pedal Powered Charging Table), 2007
+  \item Joseph Beggs Fellowship for Kinematics, 2006--2007
+  \item MAE Department Fellowship, UC Davis, 2005--2006
 \end{innerlist}
 
 \blankline
 
 \href{http://www.odu.edu}{Old Dominion University}
 \begin{innerlist}
-\item Governor's Technology Scholarship,
-				2000--2004
+  \item Governor's Technology Scholarship, 2000--2004
 \end{innerlist}
 
 \section{Academic Experience}
 
 \href{http://www.tudelft.nl}{\textbf{Delft University of Technology}}, Delft, Zuid-Holland Netherlands
 \begin{outerlist}
-\item[] \textit{Fulbright Visiting Scholar and Researcher}%
+  \item[] \textit{Fulbright Visiting Scholar and Researcher}%
         \hfill \textbf{August 2008 to present}
 \begin{innerlist}
 \item Researcher in at the \href{http://bicycle.tudelft.nl}{Bicycle Dynamics Laboratory}.
@@ -319,42 +339,58 @@ Dry Fork, Virginia USA
 
 \blankline
 
-\href{http://www.ucdavis.edu}{\textbf{University of California at Davis}}, 
-Davis, California USA
+\href{http://www.ucdavis.edu}{\textbf{University of California at Davis}}, Davis, California USA
 \begin{outerlist}
-\item[] \textit{Graduate Student}%
+  \item[] \textit{Graduate Student}%
         \hfill \textbf{September 2005 to present}
+  \begin{innerlist}
+    \item Mentored approximately 10 undergraduate students in a lab setting.
+    \item Mentored undergraduate senior design projects.
+    \item Co-managed a two year NSF grant.
+    \item Led tours of the Sport Biomechanics Lab.
+    \item Involved in the graduate student recruitment week.
+    \item Designed and adminstered the lab website.
+    \item Co-founded Davis Open Science.
+    \item Co-wrote an awarded Google Summer of Code grant (2011).
+  \end{innerlist}
 
-\item[] \textit{Biomedical Engineer Researcher}%
-        \hfill \textbf{August 2007 to present}
-\begin{innerlist}
-\item Designed and supervised the fabrication of a cell shearing device.
-\end{innerlist}
-
-\item[] \textit{Machine Shop Supervisor}%
+  \item[] \textit{Biomedical Engineer Researcher}%
+        \hfill \textbf{August 2007 to August 2009}
+  \begin{innerlist}
+    \item Designed and supervised the fabrication of a cell shearing device.
+  \end{innerlist}
+  \item[] \textit{Machine Shop Supervisor}%
         \hfill \textbf{January 2007 to June 2008}
-\begin{innerlist}
-\item Supervised student machine shop in evening hours.
-\item Helped students with machining and fabrication projects.
-\item Safety class instruction.
-\item Machining and fabrication
-\item Shop organization
-\end{innerlist}
+  \begin{innerlist}
+    \item Supervised student machine shop after hours.
+    \item Helped students with machining and fabrication projects.
+    \item Taught the shop safety class.
+    \item Fabricated various doodads and gizmos for the shop.
+    \item Organized the shop.
+  \end{innerlist}
 
 \item[] \textit{Action Research Team Facilitator}%
         \hfill \textbf{March 2007 to December 2007}
 \begin{innerlist}
-\item Led group of students in the design and construction of a pedal powered desk laptop charging station.
-\item Competed in Google and Specialized's Innovate or Die Contest
-\item Featured in many articles and news broadcasts
-\item Published in the \underline{Human Powered Home} by Tamara Dean.
+  \item Led group of students in the design and construction of a pedal powered desk laptop charging station.
+  \item Competed in Google and Specialized's Innovate or Die Contest
+  \item Featured in many articles and news broadcasts
+  \item Published in the \underline{Human Powered Home} by Tamara Dean.
 \end{innerlist}
 
 \item[] \textit{Teaching Assistant}%
         \hfill \textbf{March 2006 to June 2007}
 \begin{innerlist}
-\item Provided in-class support to undergraduate engineering students (EME 50, ENG 4, EME 250).
-\item Laboratory lectures: machine shop and drafting/CAD, graded assignments, administered tests, held office hours.
+  \item Provided in-class support to undergraduate engineering students (EME 50, ENG 4, EME 250).
+  \item Laboratory lectures: machine shop and drafting/CAD, graded assignments, administered tests, held office hours.
+\end{innerlist}
+
+\item[] \textit{Davis Open Science Co-founder}%
+        \hfill \textbf{February 2010 to present}
+\begin{innerlist}
+  \item Co-founded the graduate student group.
+  \item Co-hosted several seminars and panels.
+  \item Worked with various faculty and staff on open science projects.
 \end{innerlist}
 
 \item[] \textit{Assitant Action Research Team Facilitator}%
@@ -375,20 +411,20 @@ Davis, California USA
 \begin{outerlist}
 \item[] \textit{Undergraduate Student}%
         \hfill \textbf{August 2000 to December 2004}
-        
+
 \item[] \textit{Maglev Tram Design Engineer}%
         \hfill \textbf{May 2004 to January 2005}
         \begin{innerlist}
-\item Created a reference model of a magnetic levitation transport vehicle using AutoCAD Mechanical Desktop.
+\item Created a reference CAD model of a full-scale magnetic levitation train car using AutoCAD Mechanical Desktop.
 \end{innerlist}
 
 \item[] \textit{Langley Full Scale Tunnel Design Engineer}%
         \hfill \textbf{June 2004 to August 2005}
         \begin{innerlist}
-\item Extensive modeling and drafting with Autodesk Inventor.
-\item Designed a portable floor system for the current car balance.
+  \item Extensive modeling and drafting with Autodesk Inventor.
+  \item Designed a portable floor system for a car balance.
 \item Designed a six degree of freedom full scale car balance.
-\item Stress analysis reports for NASA specs.
+\item Wrote stress analysis reports wind tunnel balances for NASA specfications.
 \item Test-model design, fabrication and repair.
 \item Support in daily activities (test preparation, taking data, etc.).
 \end{innerlist}
@@ -426,17 +462,14 @@ Davis, California USA
 \end{innerlist}
 \end{outerlist}
 
-\section{Journal Publications}
-\cite{Moore2010b}
+\section{Publications}
+% journal
+\nocite{Moore2011}
+% conference
+\nocite{Moore2010,Moore2010a,Peterson2010,Moore2009a,Kooijman2009a,Moore2008,Moore2007}
 \bibliographystyle{plain}
 \bibliography{bicycle}
-\section{Conference Publications}
-Moore, J. and Hubbard, M., Parametric Study of Bicycle Stability. The Engineering of Sport 7: Proceedings of the 7th International Sports Engineering Association Conference. Biarritz, France. June 2-6, 2008.
-
-\blankline
-
-Moore, J., Peterson, D., and Hubbard, M., Influence of Rider Dynamics on the Whipple Bicycle Model. 11th International Symposium on Computer Simulation in Biomechanics. Tainan, Taiwan, June 28-30, 2007. 
-
+%\section{Conference Publications}
 \section{Professional Accreditation}
 Passed the Fundamentals of Engineering Exam in Virginia
 
@@ -487,12 +520,27 @@ Danville, Virginia USA
 \end{outerlist}
 
 \section{Service}
-Bicycle Mechanic and Organizer, \href{http://www.daviswiki.org/Bike_Church/}{Davis Bike Church}, Davis, CA, September 2005 to present
+Bicycle Mechanic and Organizer, \href{http://www.davisbikecollective.org}{Davis Bike Collective}, Davis, CA, September 2005 to present
 \begin{innerlist}
-\item Raised \$10,000 in donations and grants
-\item Organized parties, fundraisers, bike rides, work parties, outreach events
-\item Web site maintenance, shift scheduling, handled distributor orders, managed email listservs.
-\item Worked as a mechanic and taught bicycle repair.
+  \item Volunteered bi-weekly as a teaching mechanic.
+  \item Co-wrote bylaws and setup the legal non-profit.
+  \item Raised thousands of dollars in donations and grants.
+  \item Organized conferences, parties, fundraisers, bike rides, work parties,
+      outreach events.
+  \item Organized a 1500+ person beer tasting and movie event with New Belgium
+      Brewery.
+  \item Web site maintenance, shift scheduling, handled distributor orders, managed email listservs.
+\end{innerlist}
+
+\blankline
+
+Volunteer, \href{http://www.davisbicycles.org}{Davis Bicycles!}, Davis, CA, September 2009 to present
+\begin{innerlist}
+  \item Administer the organization's websites
+      \href{http://www.davisbicycles.org}{[1]} and
+      \href{http://www.bikedavis.info}{[2]}.
+  \item Lobby city council for bicycle ammenities.
+  \item Worked directly with city staff on various projects.
 \end{innerlist}
 
 \blankline
@@ -570,11 +618,9 @@ Programming and Scripting Languages: Python,
 
 \blankline
 
-
-Graphics: Paint Shop Pro, Macromedia Fireworks, GIMP, Inkscape
+Graphics: GIMP, Inkscape, Paint Shop Pro, Macromedia Fireworks
 
 \blankline
-
 
 Computational: \href{http://www.mathworks.com/products/matlab/}{\textsc{Matlab}}, MathCAD
 
@@ -584,12 +630,12 @@ Instrumentation: \href{http://www.ni.com/}{LabVIEW}
 
 \blankline
 
-Operating Systems: Ubuntu, Microsoft Windows
+Operating Systems: Ubuntu, Linux, Microsoft Windows
 
 \blankline
 
-Other: Microsoft Office, Google Docs, OpenOffice, \LaTeX{}, B\textsc{ib}\TeX{},
-Endnote, JabRef, TeXnic Center, Mendeley, Vim
+Other: \LaTeX{}, B\textsc{ib}\TeX{}, Google Docs, LibreOffice,
+JabRef, TeXnic Center, Mendeley, Vim, Microsoft Office, Endnote
 
 \end{document}
 
