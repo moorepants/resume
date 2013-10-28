@@ -128,6 +128,12 @@
 }
 \makeatother
 
+% multiple bibliography support
+\usepackage[sorting=none, backend=biber]{biblatex} % load the package
+\addbibresource{references.bib} % add a bib-reference file
+% no need for ``References'' to be in front of every bibliography
+\renewcommand\refname{}
+
 %%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -584,26 +590,58 @@ Passed the Fundamentals of Engineering Exam in Virginia
     \item Programmed and operated a HAAS 3-axis mill.
   \end{innerlist}
 \end{outerlist}
-\section{Publications}
-\nocite{Hess2013,
-        Gede2013,
-        Schwab2013,
-        Dembia2013,
-        Schwab2012b,
-        Schwab2012a,
-        Moore2012,
-        Hess2012,
-        Moore2011,
-        Moore2010,
-        Moore2010a,
-        Peterson2010,
-        Moore2009a,
-        Kooijman2009a,
-        Moore2009b,
-        Moore2008,
-        Moore2007}
-\bibliographystyle{unsrt}
-\bibliography{bicycle}
+\section{Journal Publications}
+\begin{refsection}
+  \nocite{
+    Dembia2013,
+    Schwab2013,
+    Hess2012,
+    Moore2011,
+  }
+  \printbibliography[heading=none]
+\end{refsection}
+%
+\section{Theses}
+\begin{refsection}
+  \nocite{
+    Moore2012
+  }
+  \printbibliography[heading=none]
+\end{refsection}
+%
+\section{Conference Proceedings}
+\begin{refsection}
+  \nocite{
+    Moore2013a,
+    Moore2013,
+    Hess2013,
+    Gede2013,
+    Schwab2012b,
+    Schwab2012a,
+    Moore2010,
+    Moore2010a,
+    Peterson2010,
+    Moore2009a,
+    Kooijman2009a,
+    Moore2009b,
+    Moore2008,
+    Moore2007,
+  }
+  \printbibliography[heading=none]
+\end{refsection}
+%
+\section{Software}
+\begin{refsection}
+  \nocite{
+    Dembia2011,
+    Moore2011a,
+  }
+\printbibliography[heading=none]
+\end{refsection}
+%\section{Data}
+%
+%\section{Posters}
+%
 \section{Talks}
 \textbf{SciPy 2013}, Austin, Texas, USA
 \begin{outerlist}
