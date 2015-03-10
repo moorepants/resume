@@ -1,4 +1,4 @@
-PREFIX=JasonMoore_cv
+PREFIX=resume
 
 pdf:
 	pdflatex $(PREFIX)
