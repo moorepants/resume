@@ -135,6 +135,8 @@
 \addbibresource{references.bib} % add a bib-reference file
 % no need for ``References'' to be in front of every bibliography
 \renewcommand\refname{}
+% handle interesting characters in the biblio
+\usepackage[T1]{fontenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -735,11 +737,19 @@ Everywhere, Planet Earth
     Moore2018a,
     Moore2018,
     Meurer2017,
-    Moore2015e,
+    Moore2015b,
     Dembia2015,
     Schwab2013,
     Hess2012,
-    Moore2011,
+    Moore2011c,
+  }
+  \printbibliography[heading=none]
+\end{refsection}
+%
+\section{Books}
+\begin{refsection}
+  \nocite{
+    Moore2017a,
   }
   \printbibliography[heading=none]
 \end{refsection}
@@ -747,19 +757,7 @@ Everywhere, Planet Earth
 \section{Theses}
 \begin{refsection}
   \nocite{
-    Moore2012
-  }
-  \printbibliography[heading=none]
-\end{refsection}
-%
-\section{Preprints}
-\begin{refsection}
-  \nocite{
-    Moore2015b,
-    Moore2015a,
-    Moore2014b,
-    Moore2015d,
-    Moore2015c,
+    Moore2012,
   }
   \printbibliography[heading=none]
 \end{refsection}
@@ -767,21 +765,21 @@ Everywhere, Planet Earth
 \section{Peer Reviewed Conference Proceedings}
 \begin{refsection}
   \nocite{
-    Moore2017a,
+    Moore2017,
     Kresie2017,
     Moore2016,
-    Moore2013a,
     Moore2013,
+    Moore2013a,
     Hess2013,
     Gede2013,
-    Schwab2012b,
+    Schwab2012,
     Schwab2012a,
-    Moore2010,
     Moore2010a,
     Peterson2010,
+    Moore2010,
+    Moore2009,
+    Kooijman2009,
     Moore2009a,
-    Kooijman2009a,
-    Moore2009b,
     Moore2008,
   }
   \printbibliography[heading=none]
@@ -791,7 +789,8 @@ Everywhere, Planet Earth
 \begin{refsection}
   \nocite{
     Moore2015,
-    Moore2014c,
+    Moore2014a,
+    Hubbard2011,
     Moore2007,
   }
   \printbibliography[heading=none]
@@ -799,18 +798,32 @@ Everywhere, Planet Earth
 \section{Software}
 \begin{refsection}
   \nocite{
-    Moore2017,
-    Moore2014a,
+    Moore2017b,
     Moore2014,
-    Moore2012a,
-    Dembia2011,
-    Moore2011a,
+    Moore2013b,
     Moore2011b,
-    Moore2011c,
-    Gede2009,
-    SymPy2006
+    Moore2011,
+    Dembia2011,
+    Moore2011e,
+    Moore2011a,
+    Moore2011d,
+    Moore2010b,
+    SymPyDevelopmentTeam2006,
   }
 \printbibliography[heading=none]
+\end{refsection}
+%
+\section{Preprints}
+\begin{refsection}
+  \nocite{
+    Cloud2018,
+    Moore2015a,
+    Moore2014d,
+    Moore2014e,
+    Moore2014c,
+    Moore2013c,
+  }
+  \printbibliography[heading=none]
 \end{refsection}
 %\section{Data}
 %
