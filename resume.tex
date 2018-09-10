@@ -131,7 +131,7 @@
 \makeatother
 
 % multiple bibliography support
-\usepackage[sorting=none, backend=biber]{biblatex} % load the package
+\usepackage[sorting=none, backend=biber, bibencoding=utf8]{biblatex} % load the package
 \addbibresource{references.bib} % add a bib-reference file
 % no need for ``References'' to be in front of every bibliography
 \renewcommand\refname{}
@@ -220,7 +220,7 @@
 \newlength{\rcollength}\setlength{\rcollength}{2.5in}%
 %
 \begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
-  2408 37th St               & E-mail: \href{mailto:moorepants@gmail.com}{moorepants@gmail.com}\\
+  2420 37th St               & E-mail: \href{mailto:moorepants@gmail.com}{moorepants@gmail.com}\\
   Sacramento, CA, 95817, USA & Personal Website: \href{http://moorepants.info}{moorepants.info}\\
   +01-530-601-9791           & G-Scholar: \href{https://scholar.google.com/citations?user=i9c-QOYAAAAJ&hl=en}{tinyurl.com/jkm-gscholar}\\
                              & Linkedin: \href{http://www.linkedin.com/pub/jason-moore/40/550/322}{tinyurl.com/jkm-linkedin}\\
@@ -251,7 +251,7 @@ science, optimal control, computer aided algebra
 
   \item[] Assistant Teaching Professor (LPSOE) \hfill \textbf{September 2015 to present} \\
     \emph{Mechanical and Aerospace Engineering Department, University of California, Davis} \\
-    (Chairs: C.P. van Dam, Steven Robinson)
+    (Chairs: C.P. van Dam (2015-2016), Stephen Robinson (2016-))
 
   \item[] Postdoctoral Research Associate \hfill \textbf{July 2013 to August 2015} \\
     \emph{Human Motion and Control Laboratory, Cleveland State University} \\
@@ -273,11 +273,10 @@ science, optimal control, computer aided algebra
     \emph{Bicycle Dynamics Laboratory, Delt University of Technology} \\
     (PI: A.L. Schwab)
 
-  \item[] Student Machine Shop Instructor \hfill \textbf{January 2007 to June 2008} \\
-    \emph{Mechanical and Aerospace Engineering Department, University of
-    California, Davis} \\
-    (Supervisor: Jeffery Feerer)
-
+  %\item[] Student Machine Shop Instructor \hfill \textbf{January 2007 to June 2008} \\
+    %\emph{Mechanical and Aerospace Engineering Department, University of
+    %California, Davis} \\
+    %(Supervisor: Jeffery Feerer)
 
   \item[] Teaching Assistant \hfill \textbf{March 2006 to June 2007} \\
     \emph{Mechanical and Aerospace Engineering Department, University of
@@ -354,12 +353,21 @@ Passed the Fundamentals of Engineering Exam in Virginia
 
 \section{Grants and Awards}
 %
-% TODO : Add dollar amounts to monetary awards.
-%
+\href{http://todo.edu}{UC Davis Global Affairs}
+\begin{innerlist}
+\item \href{https://doi.org/todo}{
+      Influence of Culture in Mechanical Design
+    }, 2018-2019, \$24k.
+\end{innerlist}
+
+\blankline
+
 \href{http://cee.ucdavis.edu/}{Center for Educational Effectiveness}
 \begin{innerlist}
 \item \href{https://doi.org/10.6084/m9.figshare.5229886.v1}{
-      Development of an Interactive Textbook Backed by Cloud Infrastructure to Pilot Active Computational Learning in an Upper Level Mechanical Vibrations Engineering Course
+      Development of an Interactive Textbook Backed by Cloud Infrastructure to
+      Pilot Active Computational Learning in an Upper Level Mechanical
+      Vibrations Engineering Course
     }, 2017-2018, \$22k.
 \end{innerlist}
 
@@ -430,6 +438,27 @@ Passed the Fundamentals of Engineering Exam in Virginia
 \href{http://www.odu.edu}{Old Dominion University}
 \begin{innerlist}
   \item Governor's Technology Scholarship, Full Tuition, \$16k, 2000--2004.
+\end{innerlist}
+
+\section{Proposals Under Review}
+%
+\href{}{United States Department of Education}
+\begin{innerlist}
+\item Expanding the LibreTexts Project into the Next-Generation Hub for
+  Construction, Dissemination, and Usage of Open Educational Resource
+  Textbooks, 2018-2022, CO-PI, \$5M.
+\end{innerlist}
+
+\section{Rejected Proposals}
+%
+\href{http://nsf.gov}{National Science Foundation}
+\begin{innerlist}
+\item Collaborative Research: Dissemination of the LibreTexts Libraries through
+  Expansion and Training in Digital Interfaces to Enhance Science Education
+  across the Nation, 2018-2022, \$5M.
+\item Collaborative Research: SI2-SSI: Infrastructure for Cross-Disciplinary
+  Scientific Computation Through Optimized Symbolic Code Generation with SymPy,
+  2017-2019, \$5M.
 \end{innerlist}
 
 %
@@ -703,7 +732,8 @@ Everywhere, Planet Earth
 \section{Journal Publications}
 \begin{refsection}
   \nocite{
-    Moore2017b,
+    Moore2018a,
+    Moore2018,
     Meurer2017,
     Moore2015e,
     Dembia2015,
@@ -832,6 +862,22 @@ Everywhere, Planet Earth
 
 \section{Tutorials and Workshops}
 %
+\textbf{COSMOS 2018}, Davis, CA, USA
+\begin{outerlist}
+  \item[] \textit{Squiggly Bicycle Routes: Physics Based Design Evaluation}
+    \hfill \textbf{July~10,~2017}
+\end{outerlist}
+
+\blankline
+
+\textbf{Data Science Initiative}, Davis, CA, USA
+\begin{outerlist}
+  \item[] \textit{Computational Engineering Curriculum}
+    \hfill \textbf{January~10,~2017}
+\end{outerlist}
+
+\blankline
+
 \textbf{SCIPY 2017}, Austin, Texas, USA
 \begin{outerlist}
   \item[] \textit{Automatic Code Generation With SymPy} (2,015 views)
@@ -903,6 +949,16 @@ Everywhere, Planet Earth
 \end{outerlist}
 
 \section{Invited Talks}
+
+\textbf{UC Davis}, Davis, CA
+\begin{outerlist}
+\item[]
+  \href{}{\textit{Education
+  Brownbag}}
+    \hfill \textbf{June~6,~2014}
+\end{outerlist}
+
+\blankline
 
 \textbf{TU Delft}, Delft, Netherlands
 \begin{outerlist}
@@ -1595,4 +1651,3 @@ Microsoft Word
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
