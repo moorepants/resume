@@ -1,0 +1,6 @@
+language: generic
+before_install:
+  - sudo apt update
+  - sudo apt install -y texlive texlive-latex-extra biber
+script:
+  - make
