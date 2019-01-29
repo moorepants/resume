@@ -1,7 +1,7 @@
 This repository contains the source files for the Curriuclum Vitae of Jason K.
-Moore. The latest rendered version can be viewed from the ShareLaTeX CI:
+Moore.
 
-[![PDF Status](https://www.sharelatex.com/github/repos/moorepants/resume/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/moorepants/resume/builds/latest/output.pdf)
+The latest version can be viewed at: http://moorepants.github.io/resume/resume.pdf
 
 The source files are based on the resume design by Ted Pavlic
 (http://www.tedpavlic.com).
