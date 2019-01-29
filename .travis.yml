@@ -1,11 +1,13 @@
-language: generic
+language: python
+python:
+  - "3.7"
 env:
   global:
     # Doctr deploy key for moorepants/resume
     - secure: "MmclUesJrtBmh+LBvRsK2hDWmhFSVtZzoVmieBEgufB/cfOkFnyuR02b8xXZm0/B2PScCN42CBhfNoqEZTYUeZLUViNKSnbdQEdIPFPRR5wJLR7vU7aC8jcj+CEhLbPIGZvXWMkevcAWp09sW+hon5p3OUc0kEKVBoigHFN09Rc="
 before_install:
   - sudo apt update
-  - sudo apt install -y texlive texlive-latex-extra biber python-pip
+  - sudo apt install -y texlive texlive-latex-extra biber
   - pip install doctr
 script:
   - set -e
