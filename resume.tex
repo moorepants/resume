@@ -131,7 +131,7 @@
 \makeatother
 
 % multiple bibliography support
-\usepackage[sorting=none, backend=biber, bibencoding=utf8]{biblatex} % load the package
+\usepackage[sorting=none,backend=biber,bibencoding=utf8,maxbibnames=10]{biblatex} % load the package
 \addbibresource{references.bib} % add a bib-reference file
 % no need for ``References'' to be in front of every bibliography
 \renewcommand\refname{}
@@ -361,8 +361,8 @@ Norfolk, Virginia USA
 
 \blankline
 
-\href{http://www.pcs.k12.va.us/schools/ths/ths.htm}{\textbf{Tunstall High School}},
-Dry Fork, Virginia USA
+\href{https://ths.pcs.k12.va.us}{\textbf{Tunstall High School}},
+Dry Fork, Pittsylvania County, Virginia USA
 \begin{outerlist}
   \item[] Advanced Diploma, May 2000
     \begin{innerlist}
@@ -380,13 +380,19 @@ Passed the Fundamentals of Engineering Exam in Virginia
   \item[] \textit{Assistant Professor}%
         \hfill \textbf{August 2020 to Present}
   \begin{innerlist}
-    \item Lead of the \href{http://mechmotum.github.io}{TU Delft Bicycle Lab}
-    \item Project lead of the NWO Perspectief Citru Altius Sanius P9 Project:
-      Fall Prevention in Consumer and Elite Cycling
-    \item Project lead of the ClickNL Bicycle of the Future project
+    \item Principal Investigator of the \href{http://mechmotum.github.io}{TU
+      Delft Bicycle Lab}
+    \item Project lead of the NWO Perspectief
+      \href{https://www.citiusaltiussanius.nl/}{Citius Altius Sanius} P9
+      Project: Fall Prevention in Consumer and Elite Cycling
+    \item Co-Principal Investigator of the "Advancing Biomechanical Modeling by
+      Improving SymPy Code Generation" CZI funded project.
+    \item Project lead of the ClickNL "Bicycle of the Future" project
     \item Supervisor of 3 postdoctoral researchers
     \item Co-promotor of 3 PhD candidates
-    \item (Co-)supervisor of 19 MSc students
+    \item (Co-)supervisor of 20 MSc students
+    \item Collaborations with Team DSM, ICTech, Royal Dutch Gazelle,
+      Garmin/Tacx, Prinoth, Quantsight, Bosch ebike Systems, SymPy
   \end{innerlist}
   \item[] \textit{Fulbright Visiting Scholar and Researcher}%
         \hfill \textbf{August 2008 to August 2009}
@@ -527,10 +533,17 @@ Passed the Fundamentals of Engineering Exam in Virginia
     \end{innerlist}
   \item[] \textit{Delft University of Technology, PhD}
     \begin{innerlist}
+      \item Christoph M. Schmidt, expected 2026 [co-promotor]
+      \item Gabriele Dell'Orto, expected 2025 [co-promotor]
+      \item Radoslaw Dukalski, expected 2023 [co-promotor]
       \item George Dialynas, PhD, 2020 [External member]
     \end{innerlist}
   \item[] \textit{Delft University of Technology, MSc, Supervisor}
     \begin{innerlist}
+      \item Timo Stienstra, MSc, 2023
+      \item Jan van der Schot, MSc, 2023
+      \item Floris van Willigen, MSc, 2023
+      \item Julie van Vlerken, MSc, 2023
       \item Jens Keijser, MSc, 2023
       \item Jan Heinen, MSc, 2022
       \item Dorus de Boer, MSc, 2022
@@ -576,13 +589,15 @@ Passed the Fundamentals of Engineering Exam in Virginia
     \hfill \textbf{August 2020 to Present}
     \begin{innerlist}
       \item Taught ``\href{https://moorepants.github.io/me40155}{Multibody
-        Dynamics B}'', Q3/Q4 2022/2023, 160-220 students, MSc core course, 2
-        junior lecturers, 3 teaching assistants, flipped course design with 20
-        lecture videos, wrote an interactive textbook, develop set of
-        autograded computational homeworks
+        Dynamics B}'', Q3/Q4 2022/2023, 160-220 students, MSc core
+        course, 2 junior lecturers, 3 teaching assistants, flipped course
+        design with 20 lecture videos, wrote an interactive textbook, develop
+        set of autograded computational homeworks
       \item Taught ``\href{https://moorepants.github.io/me40135}{Special Topics
-          in Sports Engineering}'', Q4 2021/2022/2023, 25 students, MSc
-          elective course, 1 teaching assistant
+        in Sports Engineering}'', Q4 2021/2022/2023, 25 students, MSc elective
+        course, 1 teaching assistant
+      \item Supported 2 BSc final projects.
+      \item Supervised 20 MSc students and participated in 15 MSc defenses.
     \end{innerlist}
 \end{outerlist}
 \href{http://www.ucdavis.edu}{\textbf{University of California at Davis}}, Davis, California USA
@@ -872,16 +887,23 @@ Everywhere, Planet Earth
 
 \section{Proposals Under Review}
 %
-%\begin{innerlist}
-  %\item None
-%\end{innerlist}
+\begin{innerlist}
+  \item Modeling bicycle behavior from visual stimulus to neuromuscular control
+    ability, 3mE Cohesion Proposal, 20230, CO-PI, \euro100k.
+\end{innerlist}
 
 \section{Rejected Proposals}
 %
 \begin{innerlist}
+  \item Bicycling through the labyrinth: unraveling balance control in
+    human-machine interfaces, Nederlandse Organisatie voor Wetenschappelijk
+    Onderzoek, Open Competition XS, 2022, \euro70k.
   \item NeuroLabNL Kleine, Small Projects for NWA routes 21/22, ``Cycling
     through the labyrinth: identifying independent and parallel control
     mechanisms for bicycle balance'', CO-PI, \euro100k
+  \item Cycling through the labyrinth: independent and parallel control
+    mechanisms for bicycle balance, Nederlandse
+    Organisatie voor Wetenschappelijk Onderzoek, Open Competition XS, 2021, \euro70k.
   \item Sustaining and Growing Engineering Preprints with engrXiv, Nederlandse
     Organisatie voor Wetenschappelijk Onderzoek, \euro26k.
   \item YottaBike: Single-Track Vehicle and Rider Data Harmonization to
@@ -904,6 +926,11 @@ Everywhere, Planet Earth
 \section{Journal Publications}
 \begin{refsection}
   \nocite{
+    Dukalski2023,
+    Schmidt2023b,
+    Heinen2023c,
+    Singh2023a,
+    Alizadehsaravi2023b,
     Qian2020,
     Cloud2019b,
     Moore2018a,
@@ -924,7 +951,7 @@ Everywhere, Planet Earth
     Moore2022,
     Barba2018,
     Moore2017c,
-    Moore2012,
+    Moore2012b,
   }
   \printbibliography[heading=none]
 \end{refsection}
@@ -932,6 +959,9 @@ Everywhere, Planet Earth
 \section{Conference Papers}
 \begin{refsection}
   \nocite{
+    Dressel2023c,
+    Stienstra2023a,
+    Schmidt2023c,
     Moore2019,
     Metz2019b,
     Gilboa2019,
@@ -955,14 +985,14 @@ Everywhere, Planet Earth
 \section{Preprints}
 \begin{refsection}
   \nocite{
-    Heinen2023a,
-    Singh2023a,
+    Heinen2023b,
     Alizadehsaravi2023a,
     Drauksas2023,
     Moore2021,
     Cloud2018,
     Meurer2016,
     Moore2015,
+    Moore2014e,
     Moore2013,
   }
   \printbibliography[heading=none]
@@ -977,7 +1007,7 @@ Everywhere, Planet Earth
     Moore2023,
     Dressel2023a,
     Dressel2023,
-    Singh2023,
+    Dressel2023b,
     Heinen2023,
     Alizadehsaravi2023,
     Dressel2022a,
@@ -1010,7 +1040,6 @@ Everywhere, Planet Earth
   \nocite{
     Moore2018b,
     Moore2017,
-    Moore2017c,
   }
   \printbibliography[heading=none]
 \end{refsection}
@@ -1044,6 +1073,7 @@ Everywhere, Planet Earth
 \begin{innerlist}
   \item Organizing chair of the Bicycle and Motorcycle Dynamics 2023
     conference.
+  \item TU Delft 3mE OCME Committee: (2021-11 to Present)
   \item Board Member of the \href{http://engrxiv.org}{Engrxiv: Preprint Server}
     (April 2019-present)
   \item Co-Editor of the \href{http://joss.theoj.org/}{Journal of Open Source
@@ -1071,6 +1101,8 @@ Everywhere, Planet Earth
 \section{Article and Abstract Reviews}
 %
 \begin{innerlist}
+  \item Reviewed ``Effects of cycling on spine morphology: a pilot study using
+    a 3D scanning method'', PeerJ, 2023.
   \item Reviewed ``A Double Gyroscope Concept Approach for A 2-Wheel Vehicle''
     for Vehicle System Dynamics, 2020-09.
   \item Reviewed ``gym-electric-motor (GEM): A Python toolbox for the
