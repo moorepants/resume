@@ -22,7 +22,7 @@ jobs:
         run: |
           make pdf
           mkdir output/
-          mv paper.pdf output/
+          mv resume.pdf output/
       - name: Deploy the website
         shell: bash -l {0}
         if: ${{ github.event_name == 'push' }}
