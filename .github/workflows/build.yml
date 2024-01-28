@@ -1,0 +1,33 @@
+name: build
+on:
+  push:
+    branches: master
+  pull_request:
+    branches: master
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    name: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install LaTeX
+        run: sudo apt-get install -y texlive texlive-latex-extra texlive-bibtex-extra biber
+      - name: Install Python packages
+        run: python -m pip install ghp-import
+      - name: run tests
+        shell: bash -l {0}
+        run: |
+          make pdf
+          mkdir output/
+          mv paper.pdf output/
+      - name: Deploy the website
+        shell: bash -l {0}
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          git config --global user.name "Github Actions"
+          git config --global user.email moorepants@users.noreply.github.com
+          git remote add deploy "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/moorepants/resume.git"
+          ghp-import --no-jekyll --no-history -r deploy -m "Updated via Github Actions [skip ci]" -p output
