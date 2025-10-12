@@ -7,4 +7,4 @@ pdf:
 	pdflatex $(PREFIX)
 
 clean:
-	rm *.aux *.bbl *.blg *.bcf *.log *.out *.run.xml
+	rm *.aux *.bbl *.blg *.bcf *.log *.out *.run.xml *.fdb_latexmk *.fls *.synctex*
